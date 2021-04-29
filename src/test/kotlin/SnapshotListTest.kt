@@ -1,7 +1,5 @@
 import org.junit.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
+import kotlin.test.*
 
 class SnapshotListTest {
 
@@ -58,5 +56,33 @@ class SnapshotListTest {
         assertEquals("one", first)
         assertEquals("two", second)
         assertEquals("three", third)
+    }
+
+    @Test
+    fun `list can hold lots of stuff`() {
+        val list = SnapshotList()
+
+        repeat(10_000) {
+            list.addFirst(it)
+        }
+
+        assertEquals(10_000, list.size)
+        repeat(10_000) {
+            assertTrue(list.contains(it))
+        }
+
+        repeat(10_000) {
+            list.removeLast()
+        }
+        assertEquals(0, list.size)
+    }
+
+    @Test
+    fun `removeLast returns null when empty`() {
+        val list = SnapshotList()
+
+        val lastItem = list.removeLast()
+
+        assertNull(lastItem)
     }
 }
