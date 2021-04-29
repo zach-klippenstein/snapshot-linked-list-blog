@@ -1,16 +1,16 @@
 class SnapshotList {
 
-    val count: Int = TODO()
+    val size: Int = TODO()
 
     fun addFirst(item: Any?) {
         TODO()
     }
 
-    fun addLast(item: Any?) {
+    fun removeLast(): Any? {
         TODO()
     }
 
-    fun contains(item: Any?) {
+    fun contains(item: Any?): Boolean {
         TODO()
     }
 }
